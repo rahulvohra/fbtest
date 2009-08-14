@@ -1,0 +1,43 @@
+<fb:header>
+    All Ideas
+</fb:header>
+
+<a href="{% url new_idea %}">Add a new idea!</a>
+
+<ul>
+    {% for idea in idea_list %}
+        <li>
+            <h2>{{ idea.title|escape }} by <fb:name uid="{{ idea.user.id }}"/></h2>
+            {{ idea.body|escape|linebreaks }}
+        </li>
+    {% empty %}
+        <li>Nobody has posted any ideas yet!</li>
+    {% endfor %}
+</ul>
+
+
+<!--
+<div class="clearfix" style="float: left; border: 1px #d8dfea solid; padding: 10px 10px 10px 10px; margin-left: 30px; margin-bottom: 30px; width: 500px;">
+    <fb:profile-pic uid="{{ fbuser.id }}"/>
+    <br /><br />
+    
+    
+
+    <div class="grayheader clearfix">
+        <br /><br />
+
+        <form action="." method="POST">
+          <input type="text" name="language" value="{{ fbuser.language|escape }}" />
+          <input type="submit" value="Change" />
+        </form>
+        
+        <fb:editor action="." method="POST">
+            <fb:editor-text label="Language" name="language" value=""/>
+            <fb:editor-buttonset>
+                <fb:editor-button value="Change" />
+            </fb:editor-buttonset>
+        </fb:editor>
+        
+    </div>
+</div>
+-->
